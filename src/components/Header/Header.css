@@ -1,0 +1,44 @@
+@media screen and (max-width: 490px) {
+  .pikachu{
+    width: 50px;
+  }
+  .logo{
+    display: none;
+  }
+  .pokeball {
+    display: none;
+  }
+  .navbar {
+  }
+  .navbar-item {
+    width: 100%;
+  }
+}
+
+.navbar {
+  background-color: #C53030;
+  background-image: linear-gradient( white, #061cc4);
+  color: #FFF;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.navbar-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.logo {
+  width: 150px;
+  height: 100px;
+}
+.pokeball {
+  width: 100px;
+  height: 100px;
+}
+.pikachu {
+  width: 100px;
+}

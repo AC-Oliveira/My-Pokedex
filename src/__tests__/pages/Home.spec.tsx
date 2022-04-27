@@ -3,7 +3,7 @@ import { waitFor, render, fireEvent } from '@testing-library/react';
 
 import { api } from '../../services/api';
 import Home from '../../pages/Home';
-import { useCart } from '../../hooks/useCart';
+import { useCart } from '../../hooks/usePokedex';
 
 const apiMock = new AxiosMock(api);
 const mockedAddProduct = jest.fn();

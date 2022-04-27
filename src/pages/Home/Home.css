@@ -1,0 +1,9 @@
+.div-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin-top: 20px;
+  color:black;
+}
