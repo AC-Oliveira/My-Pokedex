@@ -24,9 +24,10 @@
 }
 
 .evolution-image {
-  width: 50px;
-  max-width: 50px;
   border-radius: 15px;
+  max-width: 50px;
+  margin: 0 15px;
+  width: 50px;
 }
 
 @media screen and (min-width: 490px) {
