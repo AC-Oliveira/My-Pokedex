@@ -5,7 +5,7 @@ import { PokeId } from '../../interfaces/interface';
 import { apiSpecificPokemonInfo } from '../../services/api';
 import { formatName, formatTypes } from '../../util/format';
 import { pokemonStylesObject } from '../../util/pokemonTypesObject';
-import './PokemonDetails.css';
+import './index.css';
 
 
 export default function PokemonDetails(): JSX.Element {

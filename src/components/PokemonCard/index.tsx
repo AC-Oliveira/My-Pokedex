@@ -4,7 +4,7 @@ import { PokemonInfo, PokemonStyleObject, PokemonTypesObject } from '../../inter
 import { apiSpecificPokemonInfo } from '../../services/api';
 import { formatName } from '../../util/format';
 import { pokemonIcon, pokemonStylesObject } from '../../util/pokemonTypesObject';
-import './PokemonCard.css';
+import './index.css';
 
 export default function PokemonCard({ pokemon }: { pokemon: PokemonInfo }): JSX.Element {
   const [currentType, setCurrentType] = React.useState<string>('grass' );

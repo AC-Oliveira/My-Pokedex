@@ -1,6 +1,6 @@
 import React from 'react';
 import pokeball from '../../assets/images/ball.svg';
-import './PokeballLoading.css';
+import './index.css';
 
 export default function PokeballLoading(): JSX.Element {
   return (

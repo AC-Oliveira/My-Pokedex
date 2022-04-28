@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import PokemonDetails from './pages/PokemonDetails/PokemonDetails';
+import Home from './pages/Home';
+import PokemonDetails from './pages/PokemonDetails';
 
 const Routes = (): JSX.Element => {
   return (

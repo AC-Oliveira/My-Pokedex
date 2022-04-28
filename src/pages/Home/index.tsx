@@ -1,9 +1,9 @@
 import React from 'react';
-import PokeballLoading from '../../components/PokeballLoading/PokeballLoading';
-import PokemonCard from '../../components/PokemonCard/PokemonCard';
+import PokeballLoading from '../../components/PokeballLoading';
+import PokemonCard from '../../components/PokemonCard';
 import { usePokedex } from '../../hooks/usePokedex';
 import { apiPokemonNextData } from '../../services/api';
-import './Home.css';
+import './index.css';
 
 export default function Home(): JSX.Element {
   const {pokemonsInfo, setPokemons, nextPokemonPage, setNextPokemonPage, isFetching, setIsFetching } = usePokedex();

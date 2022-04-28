@@ -3,7 +3,7 @@ import pokelogo from '../../assets/images/pokelogo.png';
 import pokeball from '../../assets/images/pokeball.png';
 import pikachu from '../../assets/images/pikachu.png';
 import pikachuM from '../../assets/images/pikachu-inverted.png';
-import './Header.css';
+import './index.css';
 import { Link } from 'react-router-dom';
 
 export default function Header(): JSX.Element {
