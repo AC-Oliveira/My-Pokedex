@@ -38,7 +38,7 @@ export default function PokemonDetails(): JSX.Element {
         <p>{currentPokemon.flavor_text_entries[0].flavor_text}</p>
       </div>
       <div className="details-titles">
-        <h4>Evolutions</h4>
+        <h4>Evolutions:</h4>
         <div>{currentPokemon.evolutionTree.map(
           (evolution, index) => {
           const evolutionId = evolution.url.split('/')[6];
