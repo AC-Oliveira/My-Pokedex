@@ -21,9 +21,6 @@ export const apiSpecificPokemonInfo: (id: string | number) => Promise<PokemonDet
   const { data: pokemonInfo} = await axios.get(`${defaultURL}/${id}`);
   const {data: pokeSpecieInfo} = await axios.get(`${defaultURL}-species/${id}`);
 
-  console.log(pokemonInfo);
-  console.log(pokeSpecieInfo);
-
   const evolution_chain = pokeSpecieInfo.evolution_chain.url;
   const {data : { chain }} = await axios.get(evolution_chain);
   const evolutionTree = findEvolveTree(chain);

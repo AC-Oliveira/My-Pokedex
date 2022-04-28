@@ -4,7 +4,7 @@ import './PokeballLoading.css';
 
 export default function PokeballLoading(): JSX.Element {
   return (
-    <div className="pokeball-loading">
+    <div className="pokeball-container">
       <img src={pokeball} alt="pokeball" className="pokeball-loading" />
     </div>
   );

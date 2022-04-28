@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { PokedexContextData, PokedexProviderProps, PokemonData, PokemonDetails, PokemonInfo } from '../interfaces/interface';
-import { apiPokemonData, apiPokemonInfo, apiSpecificPokemonInfo } from '../services/api';
+import { apiPokemonData, apiPokemonInfo } from '../services/api';
 
-// const ONE_SECOND = 1000;
 const PokedexContext = createContext<PokedexContextData>({} as PokedexContextData);
 
 export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element {
@@ -18,12 +17,6 @@ export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element
       const {results, next} = response.data;
       setNextPokemonPage(next);
       setPokemons(results);
-      console.log('fetching pokemons');
-      if (!localStorage.getItem('cUrReNt-pOkEmOn')) {
-        const PokemonDetails = await apiSpecificPokemonInfo('1');
-        console.log('Details',PokemonDetails);
-        setCurrentPokemon(PokemonDetails);
-      }
     }
 
     loadPokemons();
@@ -47,10 +40,10 @@ export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element
         }).then((array) => {
           if (array.length % 50 === 0) {
             setPokemonsInfo((oldPokemonsInfo) => [...oldPokemonsInfo, ...array]);
-            setIsFetching(false);
           }
         });
       }
+    setIsFetching(false);
   } , [pokemons]);
 
   const contextValue: PokedexContextData = {

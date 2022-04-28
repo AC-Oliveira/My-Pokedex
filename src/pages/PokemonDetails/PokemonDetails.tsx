@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePokedex } from '../../hooks/usePokedex';
 import { PokeId } from '../../interfaces/interface';
+import { apiSpecificPokemonInfo } from '../../services/api';
 import { formatName, formatTypes } from '../../util/format';
 import { pokemonStylesObject } from '../../util/pokemonTypesObject';
 import './PokemonDetails.css';
@@ -10,12 +11,20 @@ import './PokemonDetails.css';
 export default function PokemonDetails(): JSX.Element {
   const { id } = useParams<PokeId>();
   let { currentPokemon } = usePokedex();
+  const { setCurrentPokemon } = usePokedex();
   if (!Object.keys(currentPokemon).length) {
     currentPokemon = {...JSON.parse(localStorage.getItem('cUrReNt-pOkEmOn') || '' )};
   }
-
   const jpnName = currentPokemon.names.find((names) => names.language.name === 'ja-Hrkt')?.name;
   const type = currentPokemon.types[0].type.name as keyof typeof pokemonStylesObject;
+
+  useEffect(() => {
+    const renderPokemon = async () => {
+      const PokemonDetails = await apiSpecificPokemonInfo(id);
+      setCurrentPokemon(PokemonDetails);
+    };
+    renderPokemon();
+  } , []);
 
   const imageSRC: (id: number | string ) => string = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   return (

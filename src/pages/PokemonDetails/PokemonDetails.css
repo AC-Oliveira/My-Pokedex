@@ -28,3 +28,10 @@
   max-width: 50px;
   border-radius: 15px;
 }
+
+@media screen and (min-width: 490px) {
+  .details-titles  {
+    font-size: 20px;
+    margin: 50px 20vw;
+  }
+}

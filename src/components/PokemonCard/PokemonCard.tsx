@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { usePokedex } from '../../hooks/usePokedex';
 import { PokemonInfo, PokemonStyleObject, PokemonTypesObject } from '../../interfaces/interface';
 import { apiSpecificPokemonInfo } from '../../services/api';
 import { formatName } from '../../util/format';
@@ -11,8 +10,6 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonInfo }): JSX.
   const [currentType, setCurrentType] = React.useState<string>('grass' );
 
   const {species: { name }, types } = pokemon;
-  const {setCurrentPokemon} = usePokedex();
-
   const formatedName = formatName(name);
   const typeName = types[0].type.name;
 
@@ -27,9 +24,6 @@ export default function PokemonCard({ pokemon }: { pokemon: PokemonInfo }): JSX.
     <Link to={`/pokemon/${pokemon.id}`} style={{ textDecoration: 'none', color: 'white' }} onClick={
       async () => {
         const result = await apiSpecificPokemonInfo(pokemon.id);
-        setCurrentPokemon(result);
-        console.log('result',result);
-
         localStorage.setItem('cUrReNt-pOkEmOn', JSON.stringify(result));
       }
     }>
