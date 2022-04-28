@@ -1,0 +1,30 @@
+.divdiv {
+  color: #000;
+  border: 1px solid red;
+  border-radius: 15px;
+  margin: 10px;
+  text-align: center;
+}
+
+.details-image {
+  width: 150px;
+  max-width: 150px;
+  border-radius: 15px;
+}
+
+.details-titles {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin: 50px
+}
+
+.evolution-image {
+  width: 50px;
+  max-width: 50px;
+  border-radius: 15px;
+}

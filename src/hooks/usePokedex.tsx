@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { PokedexContextData, PokedexProviderProps, PokemonData, PokemonInfo } from '../interfaces/interface';
-import { apiPokemonData, apiPokemonInfo } from '../services/api';
+import { PokedexContextData, PokedexProviderProps, PokemonData, PokemonDetails, PokemonInfo } from '../interfaces/interface';
+import { apiPokemonData, apiPokemonInfo, apiSpecificPokemonInfo } from '../services/api';
 
 // const ONE_SECOND = 1000;
 const PokedexContext = createContext<PokedexContextData>({} as PokedexContextData);
@@ -9,6 +9,8 @@ export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
   const [ pokemonsInfo, setPokemonsInfo ] = useState<PokemonInfo[]>([]);
   const [nextPokemonPage, setNextPokemonPage] = useState<string>('');
+  const [currentPokemon, setCurrentPokemon] = useState<PokemonDetails>({} as PokemonDetails);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadPokemons(): Promise<void> {
@@ -16,30 +18,56 @@ export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element
       const {results, next} = response.data;
       setNextPokemonPage(next);
       setPokemons(results);
+      console.log('fetching pokemons');
+      if (!localStorage.getItem('cUrReNt-pOkEmOn')) {
+        const PokemonDetails = await apiSpecificPokemonInfo('1');
+        console.log('Details',PokemonDetails);
+        setCurrentPokemon(PokemonDetails);
+      }
     }
 
     loadPokemons();
   }, []);
 
+
   useEffect(() => {
-    const loadPokemonInfo = async (): Promise<void> => {
+    const promises = [];
+    setIsFetching(true);
       for (const pokemon of pokemons) {
-        pokemon.name;
         const isPokemonInInfo =  pokemonsInfo.some((pokeInfo) => pokeInfo.species.name === pokemon.name);
         if (!isPokemonInInfo) {
-          const { data } = await apiPokemonInfo(pokemon.url);
-          const { height, id, moves, types, sprites, species, weight } = data;
-          setPokemonsInfo((oldPokemonsInfo) => [...oldPokemonsInfo, { height, id, moves, types, sprites, species, weight }]);
+          promises.push(apiPokemonInfo(pokemon.url));
         }
+        Promise.all(promises).then((values) => {
+          const resolvedPromises = values.map(({ data }) => {
+            const { height, id, moves, types, sprites, species, weight } = data;
+            return { height, id, moves, types, sprites, species, weight };
+          });
+          return resolvedPromises;
+        }).then((array) => {
+          if (array.length % 50 === 0) {
+            setPokemonsInfo((oldPokemonsInfo) => [...oldPokemonsInfo, ...array]);
+            setIsFetching(false);
+          }
+        });
       }
-    };
-    loadPokemonInfo();
   } , [pokemons]);
 
+  const contextValue: PokedexContextData = {
+    pokemons,
+    setPokemons,
+    nextPokemonPage,
+    setNextPokemonPage,
+    pokemonsInfo,
+    setPokemonsInfo,
+    currentPokemon,
+    setCurrentPokemon,
+    isFetching,
+    setIsFetching,
+  };
+
   return (
-    <PokedexContext.Provider
-      value={{ pokemons, setPokemons, nextPokemonPage, setNextPokemonPage,  pokemonsInfo, setPokemonsInfo }}
-    >
+    <PokedexContext.Provider value={{...contextValue}}>
       {children}
     </PokedexContext.Provider>
   );
@@ -47,6 +75,5 @@ export function PokedexProvider({ children }: PokedexProviderProps): JSX.Element
 
 export function usePokedex(): PokedexContextData {
   const context = useContext(PokedexContext);
-
   return context;
 }
