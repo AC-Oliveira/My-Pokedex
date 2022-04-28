@@ -13,6 +13,12 @@ function findEvolveTree(chain: EvolutionChain, evolveTree : PokemonData[] = []):
   if (!chain.evolves_to.length) {
     return [...evolveTree, chain.species];
   }
+
+  if (chain.evolves_to.length > 1) {
+    chain.evolves_to.forEach(evolve => evolveTree.push(evolve.species));
+    // remove duplicated objects from evolvetree
+    return [chain.species, ...evolveTree];
+  }
   evolveTree.push(chain.species);
   return findEvolveTree(chain.evolves_to[0], evolveTree);
 }
