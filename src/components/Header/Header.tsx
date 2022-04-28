@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom';
 export default function Header(): JSX.Element {
   return (
     <nav className="navbar">
-      <img className="logo" src={pokelogo} alt="Pokemon Series Logo" />
+      <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+        <img className="logo" src={pokelogo} alt="Pokemon Series Logo" />
+      </Link>
       <div className="mobile-nav navbar-item">
         <img src={pikachu} alt="Pikachu" className="pikachu" />
         <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
