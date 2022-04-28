@@ -1,4 +1,4 @@
-# SDD Chanllenge
+# SDD Challenge
 
 <img src="src/assets/images/project.png" alt="Um print do projeto">
 
@@ -13,11 +13,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Paginação por rolagem infinita.
 - [ ] Adcionar mais detalhes a página de detalhes.
 - [ ] Implementar a utilização da library Chakra UI
-
-
-## 💻 Pré-requisitos
-
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
+￼ Implementar a utilização da library Chakra UI
 
 * Verifique se o Yarn ou NPM está instalado e na versão mais recente executando o comando`yarn --version` ou `npm --version`.
 
