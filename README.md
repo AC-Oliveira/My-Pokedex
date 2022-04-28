@@ -2,7 +2,7 @@
 
 <img src="src/assets/images/project.png" alt="Um print do projeto">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> O projeto se baseia na API `https://pokeapi.co/` e tem como objetivo mostrar os pokemons da API e suas informações.
 
 ### Ajustes e melhorias
 
