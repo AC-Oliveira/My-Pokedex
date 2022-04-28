@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { usePokedex } from '../../hooks/usePokedex';
 import { PokeId } from '../../interfaces/interface';
 import { apiSpecificPokemonInfo } from '../../services/api';
@@ -24,7 +24,7 @@ export default function PokemonDetails(): JSX.Element {
       setCurrentPokemon(PokemonDetails);
     };
     renderPokemon();
-  } , []);
+  } , [id]);
 
   const imageSRC: (id: number | string ) => string = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   return (
@@ -42,7 +42,11 @@ export default function PokemonDetails(): JSX.Element {
         <div>{currentPokemon.evolutionTree.map(
           (evolution, index) => {
           const evolutionId = evolution.url.split('/')[6];
-          return < img key={`${evolution.name}-${index}`} src={imageSRC(evolutionId)} className="evolution-image" />;
+          return (
+            <Link to={`/pokemon/${evolutionId}`}>
+              < img key={`${evolution.name}-${index}`} src={imageSRC(evolutionId)} className="evolution-image" />
+            </Link>
+          );
           })
         }</div>
       </div>
