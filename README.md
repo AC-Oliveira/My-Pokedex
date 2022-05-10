@@ -1,4 +1,4 @@
-# SDD Challenge
+# My Pokedex
 
 <img src="src/assets/images/project.png" alt="Um print do projeto">
 
