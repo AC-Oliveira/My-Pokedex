@@ -18,7 +18,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 * Verifique se o Yarn ou NPM está instalado e na versão mais recente executando o comando`yarn --version` ou `npm --version`.
 
 
-## 🚀 Instalando SDD Challenge
+## 🚀 Instalando My Pokedex
 
 Para instalar o SDD Challenge, siga estas etapas:
 
@@ -31,7 +31,7 @@ ou
 npm install
 ```
 
-## ☕ Usando SDD Challenge
+## ☕ Usando My Pokedex
 
 Para usar SDD Challenge, siga estas etapas:
 
