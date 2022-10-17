@@ -8,7 +8,7 @@ import { PokedexProvider } from './hooks/usePokedex';
 ReactDOM.render(
   <PokedexProvider>
     <React.StrictMode>
-      <HashRouter>
+      <HashRouter basename="https://ac-oliveira.github.io/My-Pokedex/">
         <App />
       </HashRouter>
     </React.StrictMode>
