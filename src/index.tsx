@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { PokedexProvider } from './hooks/usePokedex';
@@ -8,9 +8,9 @@ import { PokedexProvider } from './hooks/usePokedex';
 ReactDOM.render(
   <PokedexProvider>
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   </PokedexProvider>,
   document.getElementById('root')
